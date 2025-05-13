@@ -1,35 +1,114 @@
-.app-container{
-    color: white;
-    width: 100%;
-    background-color: var(--kitty-black);
+.app-container {  
+  color: white;
+  width: 100%;
+  background-color: var(--kitty-black);
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "section-1 section-1 section-1 section-1 section-1"
+    "section-2 section-2 section-2 section-2 section-2"
+    "section-3 section-3 section-3 section-3 section-3"
+    "section-4 section-4 section-4 section-4 section-4"
+    "section-5 section-5 section-5 section-5 section-5";
 }
 
-.section-1 {  display: grid;
+.section-1 {  
+  position: relative;
+  height: 1080px;
+  grid-area: section-1; 
+  display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-template-rows: auto auto auto 1.9fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    ". . . bg bg"
     "center center center bg bg"
-    "center center center bg bg"
-    ". . . bg bg";
+    "center center center bg bg";
 }
 
-.center {  display: grid;
+.section-2 { grid-area: section-2; }
+
+.section-3 { grid-area: section-3; }
+
+.section-4 { grid-area: section-4; }
+
+.section-5 { grid-area: section-5; }
+
+.center {  
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     "logo logo logo"
-    "logo logo logo"
-    "buttons buttons buttons";
+    "buttons buttons buttons"
+    ". . .";
   grid-area: center;
+  position: relative;
 }
 
-.logo { grid-area: logo; }
+.logo { 
+  grid-area: logo;
+  position: relative;
+  height: 650px;
+  margin-top: 100px;
+  z-index: 0;;
+};
 
-.buttons { grid-area: buttons; }
 
-.bg { grid-area: bg; }
+.bg { 
+  grid-area: bg; 
+  position: relative;
+  height: 1080px;
+  margin-top: 100px;
+  z-index: -1;
+}
+
+.logo img {
+  width: 130%;
+  height: 100%;
+}
+
+.bg img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.buttons {
+  position: absolute;  
+  top: 380px;           
+  display: flex;
+  gap: 10px;
+  justify-content: left;
+  align-items: center;
+  z-index: 2;          
+  margin-left: 100px;
+}
+
+.sign-up-button,
+.sign-in-button {
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  border-width: 2px;
+}
+
+.sign-up-button {
+  background-color: var(--kitty-black);
+  border-color: var(--kitty-yellow);
+  color: var(--kitty-yellow);
+}
+
+.sign-in-button {
+  background-color: var(--kitty-yellow);
+  border-color: var(--kitty-black);
+  color: var(--kitty-black);
+}
+

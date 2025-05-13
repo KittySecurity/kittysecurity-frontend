@@ -21,24 +21,22 @@ function Home() {
 
     return (
         <div className="app-container">
-        
+            
             <div className="section-1">
                     <div className="center">
                         <div className="logo">
                             <img src={MainLogo} alt="main-logo" />
                         </div>
                         <div className="buttons">
-                            <div>
                                 <button className="sign-up-button" onClick={handleSignup}>SIGN UP NOW</button>
                                 <button className="sign-in-button" onClick={handleSignin}>SIGN IN</button>
-                            </div>
-                        </div>
-                        <div className="bg">
-                            <img src={patternTop} alt="pattern-top" />
                         </div>
                     </div>
-
+                    <div className="bg">
+                            <img src={patternTop} alt="pattern-top" />
+                    </div>
             </div>
+
             <div className="section-2">
                 <div>
                     Take Control of Your Passwords

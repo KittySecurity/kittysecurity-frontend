@@ -1,0 +1,36 @@
+.header{
+    background-color: var(--kitty-purple);
+    color: var(--kitty-yellow);
+}
+
+.nav{
+    display: flex;
+}
+
+.nav-list{
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item{
+    border: 0.1rem solid var(--kitty-yellow);
+    border-radius: 1.8rem;
+    background-color: var(--kitty-black);
+    color:  var(--kitty-yellow);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+    margin: 0.5rem;
+    height: 30%;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+
+.logo-img{
+    width: 30%;
+    height: auto;
+}

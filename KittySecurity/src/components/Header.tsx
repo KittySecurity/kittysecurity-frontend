@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
-import '../styles/Header.css';
+import Logo from "../assets/logo2.svg"
+import "../styles/Header.css"
 
 
 const Header = () => {
@@ -11,17 +12,25 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="nav">
-        <ul className="nav-list">
-          <Link to="/"  className="nav-item">Home</Link>
-          <Link to="/plants" className="nav-item">Vault</Link>
+        <div className='logo'>
+          <Link to="/">
+            <img src={Logo} alt='logo' className='logo-img'/>
+          </Link>
+        </div>
+        <div className="nav-list">
+          <Link to="/"  className="nav-item">HOME</Link>
+          
           {
             localStorage.getItem('login') === "true" ? (
+              <>
+              <Link to="/plants" className="nav-item">Vault</Link>
               <Link to="/" className="nav-item" onClick={handleLogout}>Logout</Link>
+              </>
             ) : (
-              <Link to="/login" className="nav-item">Login</Link>
+              <Link to="/register" className="nav-item">SIGN UP</Link>
             )
           }
-        </ul>
+        </div>
       </nav>
     </header>
   )

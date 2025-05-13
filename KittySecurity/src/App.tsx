@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes, Route, Navigate, Outlet} from 'react-router'
 import Home from "./pages/Home"
+import Login from "./pages/Login"
 import './App.css'
 
 const ProtectedRoute = () => {
@@ -18,7 +19,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<div>Login</div>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<div>Register</div>} />
         <Route path="/forgot-password" element={<div>Forgot Password</div>} />
         <Route path="/about" element={<div>About</div>} />

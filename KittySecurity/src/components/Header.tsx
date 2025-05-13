@@ -13,13 +13,11 @@ const Header = () => {
     <header className="header">
       <nav className="nav">
         <div className='logo'>
-          <Link to="/">
+          <Link to="/" className='logo-link'>
             <img src={Logo} alt='logo' className='logo-img'/>
           </Link>
         </div>
         <div className="nav-list">
-          <Link to="/"  className="nav-item">HOME</Link>
-          
           {
             localStorage.getItem('login') === "true" ? (
               <>

@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route, Navigate, Outlet} from 'react-router'
+import Home from "./pages/Home"
 import './App.css'
 
 const ProtectedRoute = () => {
@@ -16,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<div>Home</div>} />
+        <Route path="/" element={<Home/>} />
         <Route path="/login" element={<div>Login</div>} />
         <Route path="/register" element={<div>Register</div>} />
         <Route path="/forgot-password" element={<div>Forgot Password</div>} />

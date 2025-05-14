@@ -82,16 +82,16 @@ function Home() {
                 </div>
             </div>
             <div className="section-4">
-                <div>
+                <div className="who">
                     <h1>Who Is It For?</h1>
                     <ul>
-                        <li>Individuals: Keep your personal accounts safe and organized.</li>
-                        <li>Families: Share access securely with your loved ones and manage everyone's accounts from one place.</li>
-                        <li>Freelancers & Professionals: Store business logins, client credentials, and project access — all in one secure vault.</li>
-                        <li>Teams & Organizations: Improve security and reduce password-related IT issues with centralized credential management.</li>
+                        <li><strong>Individuals:</strong> Keep your personal accounts safe and organized.</li>
+                        <li><strong>Families:</strong> Share access securely with your loved ones and manage everyone's accounts from one place.</li>
+                        <li><strong>Freelancers & Professionals:</strong> Store business logins, client credentials, and project access — all in one secure vault.</li>
+                        <li><strong>Teams & Organizations:</strong> Improve security and reduce password-related IT issues with centralized credential management.</li>
                     </ul>
                 </div>
-                <div>
+                <div className="picture">
                     <img src={people} alt="people" />
                 </div>
             </div>

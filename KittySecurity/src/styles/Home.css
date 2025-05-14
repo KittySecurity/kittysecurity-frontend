@@ -264,9 +264,64 @@
   color: var(--kitty-yellow);
 }
 
-.section-4 { grid-area: section-4; }
+.section-4 {  
+  grid-area: section-4;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "who who who picture"
+    "who who who picture"
+    "who who who picture";
+  background-image: radial-gradient(circle at 0% 0%, #b078bf, #9b5eab, #277d7c, #149f9e);
+  height: 500px;
+}
 
-.section-5 { grid-area: section-5; }
+.who { 
+  margin-left: 150px;
+  margin-right: 100px;;
+  grid-area: who; 
+  color: var(--kitty-black);
+}
 
+.who h1{
+  font-size: 50px;
+  text-align: left;
+}
 
+.who li{
+  font-size: 30px;
+  text-align: left;
+}
+
+.picture { grid-area: picture; }
+
+.picture img {
+  margin-top: 50px;
+  margin-right: 150px;
+  width: 400px;
+  height: 400px;
+}
+
+.section-5 { 
+  grid-area: section-5; 
+  width: 600px;
+  margin: 0 auto;
+}
+
+.section-5 h1{
+  color: var(--kitty-yellow);
+  font-size: 50px;
+  text-align: center;
+}
+.section-5 p{
+  color: white;
+  width: 400px;
+  text-align: left;
+  font-size: 20px;;
+}
 

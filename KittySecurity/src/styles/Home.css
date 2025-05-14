@@ -1,35 +1,327 @@
-.app-container{
-    color: white;
-    width: 100%;
-    background-color: var(--kitty-black);
+.app-container {  
+  color: white;
+  width: 100%;
+  background-color: var(--kitty-black);
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "section-1 section-1 section-1 section-1 section-1"
+    "section-2 section-2 section-2 section-2 section-2"
+    "section-3 section-3 section-3 section-3 section-3"
+    "section-4 section-4 section-4 section-4 section-4"
+    "section-5 section-5 section-5 section-5 section-5";
 }
 
-.section-1 {  display: grid;
+.section-1 {  
+  position: relative;
+  height: 1080px;
+  grid-area: section-1; 
+  display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-template-rows: auto auto auto 1.9fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    ". . . bg bg"
     "center center center bg bg"
-    "center center center bg bg"
-    ". . . bg bg";
+    "center center center bg bg";
 }
 
-.center {  display: grid;
+.center {  
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     "logo logo logo"
-    "logo logo logo"
-    "buttons buttons buttons";
+    "buttons buttons buttons"
+    ". . .";
   grid-area: center;
+  position: relative;
+  height: 1080px;
 }
 
-.logo { grid-area: logo; }
+.logo { 
+  grid-area: logo;
+  position: relative;
+  height: 650px;
+  margin-top: 100px;
+  z-index: 0;;
+};
 
-.buttons { grid-area: buttons; }
 
-.bg { grid-area: bg; }
+.bg { 
+  grid-area: bg; 
+  position: relative;
+  height: 1080px;
+  margin-top: 100px;
+  z-index: -1;
+}
+
+.logo img {
+  width: 130%;
+  height: 100%;
+}
+
+.bg img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.buttons {
+  position: absolute;  
+  top: 480px;           
+  display: flex;
+  gap: 10px;
+  justify-content: left;
+  align-items: center;
+  z-index: 2;          
+  margin-left: 100px;
+}
+
+.sign-up-button,
+.sign-in-button {
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  border-width: 2px;
+}
+
+.sign-up-button {
+  background-color: var(--kitty-black);
+  border-color: var(--kitty-yellow);
+  color: var(--kitty-yellow);
+}
+
+.sign-in-button {
+  background-color: var(--kitty-yellow);
+  border-color: var(--kitty-black);
+  color: var(--kitty-black);
+}
+
+
+.section-2 {  
+  grid-area: section-2;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "text text info info"
+    "image image info info"
+    "image image info info";
+  height: 600px;
+  margin-left: 150px;
+}
+
+.text { 
+  grid-area: text; 
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 70px;
+  margin-top: 20px;
+  width: 600px;
+}
+
+.image { 
+  grid-area: image; 
+  height: 500px;
+  width: 600px;
+}
+
+.image img {
+  width: 600px;
+  height: 600px;
+}
+
+.info {  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sec1 sec1"
+    "sec2 sec2"
+    "sec3 sec3";
+  grid-area: info;
+  height: 750px;
+  width: 600px;
+  gap: 15px;
+}
+
+.info h1{
+  color: var(--kitty-yellow);
+  font-size: 50px;
+  text-align: left;
+}
+
+.info p{
+  color: white;
+  font-size: 30px;
+  text-align: left;
+}
+
+.sec1 { 
+  grid-area: sec1; 
+  height: 250px;
+}
+
+.sec2 { 
+  grid-area: sec2;
+  height: 250px; 
+}
+
+.sec3 { 
+  grid-area: sec3; 
+  height: 250px;
+}
+
+
+.section-3 {
+  grid-area: section-3;  
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "panels panels panels"
+    "panels panels panels"
+    "explore explore explore";
+  width: 1200px;
+  height: 1000px;
+  margin-left: 150px;
+  margin-top: 400px;
+}
+
+.panels {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "first-panel second-panel third-panel"
+    "first-panel second-panel third-panel"
+    "first-panel second-panel third-panel";
+  grid-area: panels;
+  height: 400px;
+}
+
+.first-panel { grid-area: first-panel; }
+
+.second-panel { grid-area: second-panel; }
+
+.third-panel { grid-area: third-panel; }
+
+.first-panel img,
+.second-panel img,
+.third-panel img {
+  width: 400px;
+  height: 400px;
+}
+
+.first-panel h1,
+.second-panel h1,
+.third-panel h1 {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  width: 350px;
+  margin-left: 25px;;
+}
+
+.first-panel p,
+.second-panel p,
+.third-panel p {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 300px;
+  margin-left: 50px;;
+}
+
+
+.explore { grid-area: explore; }
+
+.explore button{
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  border-width: 2px;
+  background-color: var(--kitty-black);
+  border-color: var(--kitty-yellow);
+  color: var(--kitty-yellow);
+}
+
+.section-4 {  
+  grid-area: section-4;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "who who who picture"
+    "who who who picture"
+    "who who who picture";
+  background-image: radial-gradient(circle at 0% 0%, #b078bf, #9b5eab, #277d7c, #149f9e);
+  height: 500px;
+}
+
+.who { 
+  margin-left: 150px;
+  margin-right: 100px;;
+  grid-area: who; 
+  color: var(--kitty-black);
+}
+
+.who h1{
+  font-size: 50px;
+  text-align: left;
+}
+
+.who li{
+  font-size: 30px;
+  text-align: left;
+}
+
+.picture { grid-area: picture; }
+
+.picture img {
+  margin-top: 50px;
+  margin-right: 150px;
+  width: 400px;
+  height: 400px;
+}
+
+.section-5 { 
+  grid-area: section-5; 
+  width: 600px;
+  margin: 0 auto;
+}
+
+.section-5 h1{
+  color: var(--kitty-yellow);
+  font-size: 50px;
+  text-align: center;
+}
+.section-5 p{
+  color: white;
+  width: 400px;
+  text-align: left;
+  font-size: 20px;;
+}
+

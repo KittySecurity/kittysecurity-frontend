@@ -118,7 +118,8 @@
     "text text info info"
     "image image info info"
     "image image info info";
-  height: 600px;;
+  height: 600px;
+  margin-left: 150px;
 }
 
 .text { 
@@ -129,14 +130,12 @@
   font-size: 70px;
   margin-top: 20px;
   width: 600px;
-  margin-left: 150px;
 }
 
 .image { 
   grid-area: image; 
   height: 500px;
   width: 600px;
-  margin-left: 150px;
 }
 
 .image img {
@@ -147,7 +146,6 @@
 .info {  display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto auto;
-  gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     "sec1 sec1"
@@ -187,7 +185,84 @@
 }
 
 
-.section-3 { grid-area: section-3; }
+.section-3 {
+  grid-area: section-3;  
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "panels panels panels"
+    "panels panels panels"
+    "explore explore explore";
+  width: 1200px;
+  height: 1000px;
+  margin-left: 150px;
+  margin-top: 400px;
+}
+
+.panels {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "first-panel second-panel third-panel"
+    "first-panel second-panel third-panel"
+    "first-panel second-panel third-panel";
+  grid-area: panels;
+  height: 400px;
+}
+
+.first-panel { grid-area: first-panel; }
+
+.second-panel { grid-area: second-panel; }
+
+.third-panel { grid-area: third-panel; }
+
+.first-panel img,
+.second-panel img,
+.third-panel img {
+  width: 400px;
+  height: 400px;
+}
+
+.first-panel h1,
+.second-panel h1,
+.third-panel h1 {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  width: 350px;
+  margin-left: 25px;;
+}
+
+.first-panel p,
+.second-panel p,
+.third-panel p {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 300px;
+  margin-left: 50px;;
+}
+
+
+.explore { grid-area: explore; }
+
+.explore button{
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  border-width: 2px;
+  background-color: var(--kitty-black);
+  border-color: var(--kitty-yellow);
+  color: var(--kitty-yellow);
+}
 
 .section-4 { grid-area: section-4; }
 

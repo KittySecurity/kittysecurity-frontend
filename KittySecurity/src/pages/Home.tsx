@@ -60,24 +60,24 @@ function Home() {
                 </div>
             </div>
             <div className="section-3">
-                <div>
-                    <div>
+                <div className="panels">
+                    <div className="first-panel">
                         <img src={bubble1} alt="bubble-1" />
                         <h1>Easy to Use Interface</h1>
                         <p>Intuitive interface makes managing your digital life effortless</p>
                     </div>
-                    <div>
+                    <div className="second-panel">
                         <img src={bubble2} alt="bubble-1" />
                         <h1>Top-Notch Security</h1>
                         <p>Your data is protected with end-to-end encryption—only you can unlock it</p>
                     </div>
-                    <div>
+                    <div className="third-panel">
                         <img src={bubble3} alt="bubble-1" />
                         <h1>Access Anywhere</h1>
                         <p>Access your passwords from any device with a browser</p>
                     </div>
                 </div>
-                <div>
+                <div className="explore">
                     <button>EXPLORE</button>
                 </div>
             </div>

@@ -29,14 +29,6 @@
     "center center center bg bg";
 }
 
-.section-2 { grid-area: section-2; }
-
-.section-3 { grid-area: section-3; }
-
-.section-4 { grid-area: section-4; }
-
-.section-5 { grid-area: section-5; }
-
 .center {  
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -49,6 +41,7 @@
     ". . .";
   grid-area: center;
   position: relative;
+  height: 1080px;
 }
 
 .logo { 
@@ -81,7 +74,7 @@
 
 .buttons {
   position: absolute;  
-  top: 380px;           
+  top: 480px;           
   display: flex;
   gap: 10px;
   justify-content: left;
@@ -111,4 +104,94 @@
   border-color: var(--kitty-black);
   color: var(--kitty-black);
 }
+
+
+.section-2 {  
+  grid-area: section-2;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "text text info info"
+    "image image info info"
+    "image image info info";
+  height: 600px;;
+}
+
+.text { 
+  grid-area: text; 
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 70px;
+  margin-top: 20px;
+  width: 600px;
+  margin-left: 150px;
+}
+
+.image { 
+  grid-area: image; 
+  height: 500px;
+  width: 600px;
+  margin-left: 150px;
+}
+
+.image img {
+  width: 600px;
+  height: 600px;
+}
+
+.info {  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sec1 sec1"
+    "sec2 sec2"
+    "sec3 sec3";
+  grid-area: info;
+  height: 750px;
+  width: 600px;
+  gap: 15px;
+}
+
+.info h1{
+  color: var(--kitty-yellow);
+  font-size: 50px;
+  text-align: left;
+}
+
+.info p{
+  color: white;
+  font-size: 30px;
+  text-align: left;
+}
+
+.sec1 { 
+  grid-area: sec1; 
+  height: 250px;
+}
+
+.sec2 { 
+  grid-area: sec2;
+  height: 250px; 
+}
+
+.sec3 { 
+  grid-area: sec3; 
+  height: 250px;
+}
+
+
+.section-3 { grid-area: section-3; }
+
+.section-4 { grid-area: section-4; }
+
+.section-5 { grid-area: section-5; }
+
+
 

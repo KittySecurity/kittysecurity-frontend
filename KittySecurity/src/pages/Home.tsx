@@ -38,22 +38,22 @@ function Home() {
             </div>
 
             <div className="section-2">
-                <div>
+                <div className="text">
                     Take Control of Your Passwords
                 </div>
-                <div>
+                <div className="image">
                     <img src={computer} alt="computer" />
                 </div>
-                <div>
-                    <div>
+                <div className="info">
+                    <div className="sec1">
                         <h1>Create Your Account</h1>
                         <p>Sign up in just a few clicks using your email address. Choose a strong master password — this is the only password you’ll ever need to remember.</p>
                     </div>
-                    <div>
+                    <div className="sec2">
                         <h1>Store Your Passwords</h1>
                         <p>Add your existing accounts manually, or use our browser extension to save new ones automatically as you browse.</p>
                     </div>
-                    <div>
+                    <div className="sec3">
                         <h1>Use With Confidence</h1>
                         <p>Fill in login forms instantly, generate strong passwords on the fly, and manage your accounts with ease.</p>
                     </div>

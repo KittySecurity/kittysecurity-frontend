@@ -36,7 +36,7 @@
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    "logo logo logo"
+    "logo-home logo-home logo-home"
     "buttons buttons buttons"
     ". . .";
   grid-area: center;
@@ -44,8 +44,8 @@
   height: 1080px;
 }
 
-.logo { 
-  grid-area: logo;
+.logo-home { 
+  grid-area: logo-home;
   position: relative;
   height: 650px;
   margin-top: 100px;
@@ -61,7 +61,7 @@
   z-index: -1;
 }
 
-.logo img {
+.logo-home img {
   width: 130%;
   height: 100%;
 }

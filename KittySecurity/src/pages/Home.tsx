@@ -24,7 +24,7 @@ function Home() {
             
             <div className="section-1">
                     <div className="center">
-                        <div className="logo">
+                        <div className="logo-home">
                             <img src={MainLogo} alt="main-logo" />
                         </div>
                         <div className="buttons">

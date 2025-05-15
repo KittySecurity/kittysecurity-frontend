@@ -1,11 +1,8 @@
-.login-container{
+.login-container {  
     background-color: var(--kitty-black);
     width: 100%;
-    height: 100%;
-    color: white;;
-}
-
-.login-container {  
+    height: 100vh;
+    color: white;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
@@ -16,29 +13,28 @@
     grid-template-areas:
         "pattern-bot login-form pattern-top"
         "pattern-bot login-form pattern-top"
+        "pattern-bot login-form pattern-top"
         "pattern-bot account pattern-top";
-        height: 535px;
 }
 
 .pattern-bot { 
     grid-area: pattern-bot; 
     position: relative;
-    height: 535px;
+    height: 100vh;
 }
 
 .pattern-bot img{
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .pattern-top { 
-    grid-area: pattern-top; 
-    position: relative;
-    height: 535px;
+    grid-area: pattern-top;
+    height: 100vh;
 }
 .pattern-top img{
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .login-form{

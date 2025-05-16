@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import Header from "../components/Header"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/Register.css"
 import patternBot from "../assets/wzorki2.svg"
 import patternTop from "../assets/wzorki3.svg"
@@ -9,7 +9,8 @@ import patternTop from "../assets/wzorki3.svg"
 function Register(){
     const navigate = useNavigate();
     const [error, setError] = useState<string | null>(null);
-    const [login, setLogin] = useState<string>()
+    const [color, setColor] = useState<string>();
+    const [login, setLogin] = useState<string>();
     const [email, setEmail] = useState<string>();
     const [password, setPassword] = useState<string>();
     const [strength, setStrength] = useState<number>(0.0);
@@ -58,6 +59,14 @@ function Register(){
         return score / 8;
     }
 
+    useEffect(() => {
+        if (strength < 0.3) setColor("#6B0861");
+        else if (strength > 0.3 && strength <= 0.5) setColor("#723582");
+        else if (strength > 0.5 && strength <= 0.8) setColor("#E5E900");
+        else if (strength > 0.8 && strength <= 1) setColor("#046463");
+        else setColor("gray");
+    }, [strength]);
+
     return(
         <div className="register-header">
             <Header />
@@ -96,6 +105,13 @@ function Register(){
                         <div className="strong-password">
                             <label>Password strength:</label><br/>
                             <progress className="strong-password-bar" value={strength}/>
+                            <style>
+                                {`
+                                    .strong-password-bar::-webkit-progress-value { background-color: ${color}; }
+                                    .strong-password-bar::-moz-progress-bar { background-color: ${color}; }
+                                    .strong-password-bar { accent-color: ${color}; }
+                                `}
+                            </style>
                             <div className="strong-password-text">
                                 {strength < 0.3 && <span>Very weak</span>}
                                 {strength > 0.3 && strength <= 0.5 && <span>Weak</span>}

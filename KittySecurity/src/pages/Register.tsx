@@ -94,7 +94,7 @@ function Register(){
                             onChange={(e) => {setPassword(e.target.value); setStrength(evaluatePassword(e.target.value));}}/>
                         </div>
                         <div className="strong-password">
-                            <label>Password strength:</label>
+                            <label>Password strength:</label><br/>
                             <progress className="strong-password-bar" value={strength}/>
                             <div className="strong-password-text">
                                 {strength < 0.3 && <span>Very weak</span>}
@@ -117,7 +117,7 @@ function Register(){
                     </form>
                 </div>
                 <div className="account">
-                    <Link to="/login">ALREADY HAVE AN ACCOUNT? SIGN IN HERE</Link>
+                    <Link className="account-register-link" to="/login">ALREADY HAVE AN ACCOUNT? SIGN IN HERE</Link>
                 </div>
             </div>
         </div>

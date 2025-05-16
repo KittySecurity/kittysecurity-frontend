@@ -98,7 +98,7 @@ function Home() {
             <div className="section-5">
                 <h1>Contact Us</h1>
                 <p>
-                Sign up in just a few clicks using your email address. Choose a strong master password — this is the only password you’ll ever need to remember.
+                    This website is part of a student project developed for educational and demonstration purposes only. It is not intended for commercial use or for storing real, sensitive, or confidential information such as actual passwords or personal data.
                 </p>
             </div>
         </div>

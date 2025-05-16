@@ -53,7 +53,7 @@ function Login(){
                 </form>
             </div>
             <div className="account">
-                <Link to="/register">DON'T HAVE AN ACCOUNT YET? SIGN UP HERE</Link>
+                <Link className="account-link" to="/register">DON'T HAVE AN ACCOUNT YET? SIGN UP HERE</Link>
             </div>
             </div>
         </div>

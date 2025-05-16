@@ -17,7 +17,7 @@
 
 .section-1 {  
   position: relative;
-  height: 1080px;
+  height: 67.5rem;
   grid-area: section-1; 
   display: grid;
   grid-template-columns: auto auto auto auto auto;
@@ -41,14 +41,14 @@
     ". . .";
   grid-area: center;
   position: relative;
-  height: 1080px;
+  height: 67.5rem;
 }
 
 .logo-home { 
   grid-area: logo-home;
   position: relative;
-  height: 650px;
-  margin-top: 100px;
+  height: 40.625rem;
+  margin-top: 6.25rem;
   z-index: 0;;
 };
 
@@ -56,8 +56,8 @@
 .bg { 
   grid-area: bg; 
   position: relative;
-  height: 1080px;
-  margin-top: 100px;
+  height: 67.5rem;
+  margin-top: 6.25rem;
   z-index: -1;
 }
 
@@ -74,23 +74,23 @@
 
 .buttons {
   position: absolute;  
-  top: 480px;           
+  top: 30rem;           
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   justify-content: left;
   align-items: center;
   z-index: 2;          
-  margin-left: 100px;
+  margin-left: 6.25rem;
 }
 
 .sign-up-button,
 .sign-in-button {
-  width: 250px;
-  height: 50px;
-  font-size: 20px;
+  width: 15.625rem;
+  height: 3.125rem;
+  font-size: 1.25rem;
   font-weight: bold;
   text-decoration: underline;
-  border-width: 2px;
+  border-width: 0.125rem;
 }
 
 .sign-up-button {
@@ -118,8 +118,8 @@
     "text text info info"
     "image image info info"
     "image image info info";
-  height: 600px;
-  margin-left: 150px;
+  height: 37.5rem;
+  margin-left: 9.375rem;
 }
 
 .text { 
@@ -127,20 +127,20 @@
   color: white;
   text-align: center;
   font-weight: bold;
-  font-size: 70px;
-  margin-top: 20px;
-  width: 600px;
+  font-size: 4.375rem;
+  margin-top: 1.25rem;
+  width: 37.5rem;
 }
 
 .image { 
   grid-area: image; 
-  height: 500px;
-  width: 600px;
+  height: 31.25rem;
+  width: 37.5rem;
 }
 
 .image img {
-  width: 600px;
-  height: 600px;
+  width: 37.5rem;
+  height: 37.5rem;
 }
 
 .info {  display: grid;
@@ -152,36 +152,36 @@
     "sec2 sec2"
     "sec3 sec3";
   grid-area: info;
-  height: 750px;
-  width: 600px;
-  gap: 15px;
+  height: 46.875rem;
+  width: 37.5rem;
+  gap: 0.938rem;
 }
 
 .info h1{
   color: var(--kitty-yellow);
-  font-size: 50px;
+  font-size: 3.125rem;
   text-align: left;
 }
 
 .info p{
   color: white;
-  font-size: 30px;
+  font-size: 1.875rem;
   text-align: left;
 }
 
 .sec1 { 
   grid-area: sec1; 
-  height: 250px;
+  height: 15.625rem;
 }
 
 .sec2 { 
   grid-area: sec2;
-  height: 250px; 
+  height: 15.625rem; 
 }
 
 .sec3 { 
   grid-area: sec3; 
-  height: 250px;
+  height: 15.625rem;
 }
 
 
@@ -197,23 +197,23 @@
     "panels panels panels"
     "panels panels panels"
     "explore explore explore";
-  width: 1200px;
-  height: 1000px;
-  margin-left: 150px;
-  margin-top: 400px;
+  width: 75rem;
+  height: 62.5rem;
+  margin-left: 9.375rem;
+  margin-top: 25rem;
 }
 
 .panels {  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 0.625rem;
   grid-auto-flow: row;
   grid-template-areas:
     "first-panel second-panel third-panel"
     "first-panel second-panel third-panel"
     "first-panel second-panel third-panel";
   grid-area: panels;
-  height: 400px;
+  height: 25rem;
 }
 
 .first-panel { grid-area: first-panel; }
@@ -225,40 +225,40 @@
 .first-panel img,
 .second-panel img,
 .third-panel img {
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
 }
 
 .first-panel h1,
 .second-panel h1,
 .third-panel h1 {
   color: white;
-  font-size: 50px;
+  font-size: 3.125rem;
   text-align: center;
-  width: 350px;
-  margin-left: 25px;;
+  width: 21.875rem;
+  margin-left: 1.563rem;
 }
 
 .first-panel p,
 .second-panel p,
 .third-panel p {
   color: white;
-  font-size: 20px;
+  font-size: 1.25rem;
   text-align: center;
-  width: 300px;
-  margin-left: 50px;;
+  width: 18.75rem;
+  margin-left: 3.125rem;
 }
 
 
 .explore { grid-area: explore; }
 
 .explore button{
-  width: 250px;
-  height: 50px;
-  font-size: 20px;
+  width: 15.625rem;
+  height: 3.125rem;
+  font-size: 1.25rem;
   font-weight: bold;
   text-decoration: underline;
-  border-width: 2px;
+  border-width: 0.125rem;
   background-color: var(--kitty-black);
   border-color: var(--kitty-yellow);
   color: var(--kitty-yellow);
@@ -278,50 +278,50 @@
     "who who who picture"
     "who who who picture";
   background-image: radial-gradient(circle at 0% 0%, #b078bf, #9b5eab, #277d7c, #149f9e);
-  height: 500px;
+  height: 31.25rem;
 }
 
 .who { 
-  margin-left: 150px;
-  margin-right: 100px;;
+  margin-left: 9.375rem;
+  margin-right: 6.25rem;
   grid-area: who; 
   color: var(--kitty-black);
 }
 
 .who h1{
-  font-size: 50px;
+  font-size: 3.125rem;
   text-align: left;
 }
 
 .who li{
-  font-size: 30px;
+  font-size: 1.875rem;
   text-align: left;
 }
 
 .picture { grid-area: picture; }
 
 .picture img {
-  margin-top: 50px;
-  margin-right: 150px;
-  width: 400px;
-  height: 400px;
+  margin-top: 3.125rem;
+  margin-right: 9.375rem;
+  width: 25rem;
+  height: 25rem;
 }
 
 .section-5 { 
   grid-area: section-5; 
-  width: 600px;
+
   margin: 0 auto;
 }
 
 .section-5 h1{
   color: var(--kitty-yellow);
-  font-size: 50px;
+  font-size: 3.125rem;
   text-align: center;
 }
 .section-5 p{
   color: white;
-  width: 400px;
-  text-align: left;
-  font-size: 20px;;
+  margin-left: 0.5rem;
+  text-align: center;
+  font-size: 1.25rem;
 }
 

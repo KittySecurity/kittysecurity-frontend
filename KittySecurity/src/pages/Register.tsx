@@ -67,6 +67,7 @@ function Register(){
                             value={passwordConfiramtion}
                             onChange={(e) => setPasswordConfirmation(e.target.value)}/>
                         </div>
+                        <Link to="/strong-password">HOW TO CREATE STRONG PASSWORD? CHECK IT OUT HERE</Link>
                         <div>
                             <button type="submit">SIGN UP</button>
                         </div>

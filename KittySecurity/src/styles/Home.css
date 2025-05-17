@@ -25,8 +25,8 @@
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    "center center center bg bg"
-    "center center center bg bg";
+    "center center center . ."
+    "center center center . .";
 }
 
 .center {  
@@ -46,31 +46,25 @@
 
 .logo-home { 
   grid-area: logo-home;
-  position: relative;
   height: 40.625rem;
   margin-top: 6.25rem;
-  z-index: 0;;
-};
-
-
-.bg { 
-  grid-area: bg; 
-  position: relative;
-  height: 67.5rem;
-  margin-top: 6.25rem;
-  z-index: -1;
+  margin-right: 35rem;;
+  z-index: 0;
 }
 
-.logo-home img {
-  width: 130%;
-  height: 100%;
+
+.bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: auto;
+  width: 60%;
 }
 
-.bg img {
+.logo-home-img {
   width: 100%;
   height: 100%;
 }
-
 
 .buttons {
   position: absolute;  
@@ -138,7 +132,7 @@
   width: 37.5rem;
 }
 
-.image img {
+.image-img {
   width: 37.5rem;
   height: 37.5rem;
 }
@@ -157,13 +151,13 @@
   gap: 0.938rem;
 }
 
-.info h1{
+.info-h1{
   color: var(--kitty-yellow);
   font-size: 3.125rem;
   text-align: left;
 }
 
-.info p{
+.info-p{
   color: white;
   font-size: 1.875rem;
   text-align: left;
@@ -222,16 +216,16 @@
 
 .third-panel { grid-area: third-panel; }
 
-.first-panel img,
-.second-panel img,
-.third-panel img {
+.first-panel-img,
+.second-panel-img,
+.third-panel-img {
   width: 25rem;
   height: 25rem;
 }
 
-.first-panel h1,
-.second-panel h1,
-.third-panel h1 {
+.first-panel-h1,
+.second-panel-h1,
+.third-panel-h1 {
   color: white;
   font-size: 3.125rem;
   text-align: center;
@@ -239,9 +233,9 @@
   margin-left: 1.563rem;
 }
 
-.first-panel p,
-.second-panel p,
-.third-panel p {
+.first-panel-p,
+.second-panel-p,
+.third-panel-p {
   color: white;
   font-size: 1.25rem;
   text-align: center;
@@ -252,7 +246,7 @@
 
 .explore { grid-area: explore; }
 
-.explore button{
+.explore-button{
   width: 15.625rem;
   height: 3.125rem;
   font-size: 1.25rem;
@@ -288,19 +282,19 @@
   color: var(--kitty-black);
 }
 
-.who h1{
+.who-h1{
   font-size: 3.125rem;
   text-align: left;
 }
 
-.who li{
+.who-li{
   font-size: 1.875rem;
   text-align: left;
 }
 
 .picture { grid-area: picture; }
 
-.picture img {
+.picture-img {
   margin-top: 3.125rem;
   margin-right: 9.375rem;
   width: 25rem;
@@ -313,12 +307,12 @@
   margin: 0 auto;
 }
 
-.section-5 h1{
+.section-5-h1{
   color: var(--kitty-yellow);
   font-size: 3.125rem;
   text-align: center;
 }
-.section-5 p{
+.section-5-p{
   color: white;
   margin-left: 0.5rem;
   text-align: center;

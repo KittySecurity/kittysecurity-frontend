@@ -1,5 +1,13 @@
 #root {
   width: 100%;
+  height: max-content;
   margin: 0 auto;
   text-align: center;
+}
+
+html, body #root{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
 }

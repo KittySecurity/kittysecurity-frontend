@@ -2,7 +2,7 @@
     background-color: var(--kitty-purple);
     color: var(--kitty-yellow);
     width: 100%;
-}
+    height: auto;
 
 .nav{
     display: flex;

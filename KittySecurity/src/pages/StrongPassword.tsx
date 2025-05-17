@@ -1,5 +1,6 @@
 import Header from "../components/Header"
 import "../styles/StrongPassword.css"
+import lock from "../assets/Lock.svg"
 
 function StrongPassword() {
     return(
@@ -7,10 +8,10 @@ function StrongPassword() {
             <Header />
             <div className="strong-password-main">
                 <div className="lock-img">
-                    <img  alt="lock" />
+                    <img src={lock}  alt="lock" />
                 </div>
                 <div className="strong-password-text">
-                    <h1>Strong Password</h1>
+                    <h1 className="strong-password-text-h1">Strong Password</h1>
                     <p>
                         To ensure the highest level of security, your password must meet the following criteria:
                         <ul>

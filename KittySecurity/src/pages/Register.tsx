@@ -126,10 +126,11 @@ function Register(){
                             value={passwordConfiramtion}
                             onChange={(e) => setPasswordConfirmation(e.target.value)}/>
                         </div>
-                        {error && <div className="error">{error}</div>}
+                        <Link to="/strong-password">HOW TO CREATE STRONG PASSWORD? CHECK IT OUT HERE</Link>
                         <div>
                             <button type="submit">SIGN UP</button>
                         </div>
+                        {error && <div className="error">{error}</div>}
                     </form>
                 </div>
                 <div className="account">

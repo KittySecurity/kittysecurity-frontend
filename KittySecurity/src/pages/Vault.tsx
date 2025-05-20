@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
 import Header from "../components/Header";
+import PasswordEntry from "../components/PasswordEntry";
 import "../styles/Vault.css"
 import User from "../assets/user.svg"
 import Plus from "../assets/add.svg"
-import Eye from "../assets/eye.svg"
-import Copy from "../assets/copy.svg"
+
 
 function Vault() {
     return(
@@ -33,19 +33,32 @@ function Vault() {
                     <table>
                         <tr>
                             <th>Name</th>
-                            <th>Username/mail</th>
+                            <th>Login</th>
+                            <th>Url</th>
                             <th>Password</th>
                             <th>Action</th>
                         </tr>
-                        <tr>
-                            <td>Xxx</td>
-                            <td>Yxx</td>
-                            <td>************</td>
-                            <td>
-                                <img src={Copy} alt="copy"/>
-                                <img src={Eye} alt="eye"/>
-                            </td>
-                        </tr>
+                        <PasswordEntry id={{
+                            name: "Example Site",
+                            url: "https://example.com",
+                            login: "user@example.com",
+                            encrypted: "encryptedPassword123",
+                            IV: "ivExample123"
+                        }}/>
+                        <PasswordEntry id={{
+                            name: "Example Site",
+                            url: "https://example.com",
+                            login: "user@example.com",
+                            encrypted: "encryptedPassword123",
+                            IV: "ivExample123"
+                        }}/>
+                        <PasswordEntry id={{
+                            name: "Example Site",
+                            url: "https://example.com",
+                            login: "user@example.com",
+                            encrypted: "encryptedPassword123",
+                            IV: "ivExample123"
+                        }}/>
                     </table>
                 </div>
             </div>

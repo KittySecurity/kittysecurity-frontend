@@ -4,6 +4,8 @@
   --kitty-green: #046463;
   --kitty-grey: #292929;
   --kitty-purple: #723582;
+  --toastify-color-dark: var(--kitty-grey);
+  --toastify-text-color-dark: var(--kitty-yellow);
 }
 
 body {

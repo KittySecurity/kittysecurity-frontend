@@ -25,7 +25,7 @@ function Vault() {
                     </div>
                     <div className="add-password">
                         <img  src={Plus} alt="add" />
-                        <h1>ADD PASSWORD</h1>
+                        <h1>NEW</h1>
                     </div>
                     
                 </div>

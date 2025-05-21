@@ -1,7 +1,9 @@
 import { useState } from "react";
  import { ToastContainer, toast } from 'react-toastify';
 import Eye from "../assets/eye.svg"
+import EyeLash from "../assets/eyelash.svg"
 import Copy from "../assets/copy.svg"
+import ColorCopy from "../assets/colorCopy.svg"
 import "../styles/PasswordEntry.css"
 
 type PasswordEntryProps = {
@@ -17,6 +19,7 @@ type PasswordEntryProps = {
 const PasswordEntire = ({id} : PasswordEntryProps) => {
     const { name, url, login, encrypted } = id;
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [copySate, setCopyState] = useState(false);
 
 
     const handlePasswordVisible = () => {
@@ -29,7 +32,7 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
 
     const handleCopyPassword = () => {
         navigator.clipboard.writeText(encrypted);
-        toast("Password copied to clipboard!", {
+        toast("✔️ Password copied to clipboard!", {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: true,
@@ -52,8 +55,16 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
                 {passwordVisible ? encrypted : "************"}
             </td>
             <td className="password-entry-column password-column-round-right">
-                <img src={Copy} alt="copy" onClick={handleCopyPassword}/>
-                <img src={Eye} alt="eye" onClick={handlePasswordVisible}/>
+                <img src={copySate ? ColorCopy : Copy} alt="copy"
+                onMouseDown={() => setCopyState(true)}
+                onMouseUp={() => setCopyState(false)}
+                onClick={handleCopyPassword}/>
+                <img
+                    src={passwordVisible ? EyeLash : Eye}
+                    alt={passwordVisible ? "hide password" : "show password"}
+                    onClick={handlePasswordVisible}
+                    style={{ cursor: "pointer" }}
+                />
             </td>
         </tr>
         <ToastContainer />

@@ -45,7 +45,6 @@ function ForgotPassword() {
             </div>
             <div className="login-form forgot-psswd">
                 <h1>FORGOT PASSWORD?</h1>
-                <p>and manage your passwords in one place – safely and conveniently!</p>
                 <form onSubmit={handleForgotPassword}>
                     <div className="e-mail">
                         <label>Email:</label>

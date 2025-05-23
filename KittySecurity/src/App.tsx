@@ -3,6 +3,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import StrongPassword from './pages/StrongPassword'
+import ForgotPassword from './pages/ForgotPassword'
 import './App.css'
 
 const ProtectedRoute = () => {
@@ -23,7 +24,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/forgot-password" element={<div>Forgot Password</div>} />
+        <Route path="/forgot-password" element={<ForgotPassword/>} />
         <Route path="/strong-password" element={<StrongPassword/>} />
         <Route path="/about" element={<div>About</div>} />
         <Route element={<ProtectedRoute />}>

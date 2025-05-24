@@ -25,7 +25,7 @@
     border: none;
     width: 90%;
     background-color: var(--kitty-black);
-    color: var(--kitty-grey);
+    color: #fff;
     border-radius: 2rem;
     padding: 1rem 1rem;
     margin-bottom: 0.5rem;
@@ -41,6 +41,11 @@
     border-radius: 2rem;
     cursor: pointer;
     margin: 1rem 0.5rem 0.5rem 0.5rem;
+}
+
+.modal-content button:active{
+    transform: scale(0.95);
+    background-color: #E5c900;
 }
 
 .modal-input{
@@ -72,4 +77,8 @@
     width: 1.5rem;
     height: auto;
     margin: 0.5rem;
+}
+
+.password-input img:active{
+    transform: scale(0.9);
 }

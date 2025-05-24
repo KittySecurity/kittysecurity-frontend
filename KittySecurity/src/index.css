@@ -14,3 +14,8 @@ body {
   display: flex;
   place-items: center;
 }
+
+button {
+  cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+}

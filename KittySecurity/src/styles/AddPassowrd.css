@@ -1,0 +1,75 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--kitty-grey);
+    color: var(--kitty-yellow);
+    padding: 2rem;
+    border-radius: 2rem;
+    width: 25%;
+    text-align: center;
+    border: var(--kitty-yellow) 0.2rem solid;
+}
+
+.modal-content input{
+    border: none;
+    width: 90%;
+    background-color: var(--kitty-black);
+    color: var(--kitty-grey);
+    border-radius: 2rem;
+    padding: 1rem 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-content button {
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: var(--kitty-yellow);
+    color: var(--kitty-black);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    margin: 1rem 0.5rem 0.5rem 0.5rem;
+}
+
+.modal-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+}
+
+.modal-input h2{
+    font-size: 2.5rem;
+}
+
+.modal-input label {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-align: left;
+    margin-left: 10%;
+    width: 100%;     
+}
+
+.password-input{
+    display: flex;
+    width: 95%;
+}
+
+.password-input img{
+    width: 1.5rem;
+    height: auto;
+    margin: 0.5rem;
+}

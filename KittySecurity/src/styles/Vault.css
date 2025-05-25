@@ -84,6 +84,10 @@
     border-radius: 1.25rem;   
 }
 
+.add-password-button:active {
+    transform: scale(0.95);
+}
+
 .add-password img{
     width: 2rem;
     height: auto;

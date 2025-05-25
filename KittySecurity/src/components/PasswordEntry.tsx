@@ -34,7 +34,7 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
         navigator.clipboard.writeText(encrypted);
         toast("✔️ Password copied to clipboard!", {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 1000,
             hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: false,
@@ -50,9 +50,9 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
             
             <td className="password-entry-column password-column-round-left">{name}</td>
             <td className="password-entry-column">{login}</td>
-            <td className="password-entry-column"><a href={url}>{url}</a></td>
+            <td className="password-entry-column"><a href={url} target="_blank">{url}</a></td>
             <td className="password-entry-column">
-                {passwordVisible ? encrypted : "************"}
+                {passwordVisible ? encrypted : "*".repeat(encrypted.length)}
             </td>
             <td className="password-entry-column password-column-round-right">
                 <img src={copySate ? ColorCopy : Copy} alt="copy"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import PasswordEntry from "../components/PasswordEntry";
+import AddPassword from "../components/AddPassword";
 import "../styles/Vault.css"
 import User from "../assets/user.svg"
 import Plus from "../assets/add.svg"
@@ -9,6 +10,7 @@ import ColorPlus from "../assets/colorAdd.svg"
 
 function Vault() {
     const [addPassword, setAddPassword] = useState(false);
+    const [newPassword, setNewPassword] = useState(false);
 
     return(
         <div className="vault-header">
@@ -29,7 +31,8 @@ function Vault() {
                     <div className="add-password">
                         <button className="add-password-button"
                     onMouseOver={() => setAddPassword(true)}
-                    onMouseLeave={() => setAddPassword(false)}>
+                    onMouseLeave={() => setAddPassword(false)}
+                    onClick={() => setNewPassword(true)}>
                         <img  src={addPassword ? ColorPlus : Plus} alt="add" />
                         <h1 style={{ color: addPassword ? "#046463" : "#723582" }}>NEW</h1>
                         
@@ -70,6 +73,9 @@ function Vault() {
                     </table>
                 </div>
             </div>
+            {
+                newPassword && (<AddPassword onClose={() => setNewPassword(false)}/>)
+            }
         </div>
     );
 }

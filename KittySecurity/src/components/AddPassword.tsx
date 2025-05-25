@@ -30,6 +30,13 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
   const [newPassword, setNewPassword] = useState("");
   const [showSettings, setShowSettings] = useState(false);
   const [settings, setSettings] = useState<PasswordSettings>(defaultSettings);
+  const enabledSwitches = [
+    settings.lowercase,
+    settings.uppercase,
+    settings.numbers,
+    settings.special,
+  ].filter(Boolean).length;
+  const disabledColor = '#bdbdbd';
 
 
   const handleGeneratePassword = () => {
@@ -89,13 +96,14 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
             <>
               <div className="modal-input">
                 <h2>PASSWORD SETTINGS</h2>
-                <label>Length of password: {settings.length}</label>
+                <label>LENGTH OF PASSWORD: {settings.length}</label>
                 <Slider
                     value={settings.length}
                     min={5}
                     max={128}
                     sx={{ '--Slider-trackBackground': '#046463',
                           '--Slider-thumbColor': '#046463',
+                          '--Slider-thumbBackground': '#046463',
                           '--Slider-valueLabelBackground': '#046463',
                         '&:hover': {
                             '--Slider-trackBackground': '#046463',
@@ -111,9 +119,14 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                     valueLabelDisplay="auto" />
             </div>
             <div className="modal-input">
-              <label>Contains special charACTERS</label>
+              <label style={{
+                color: settings.special && enabledSwitches === 1 ? disabledColor : undefined,
+                transition: 'color 0.2s'
+              }}>
+                CONTAINS SPECIAL CHARACTERS </label>
               <Switch
                   checked={settings.special}
+                  disabled={settings.special && enabledSwitches === 1}
                   onChange={(e) => setSettings({ ...settings, special: e.target.checked })}
                   slotProps={{
                     track: {
@@ -126,7 +139,7 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                       sx: {
                         justifyContent: 'space-around',
                         backgroundColor: '#000',
-                        color: settings.numbers ? '#723582': '#046463' ,
+                        color: settings.special ?  '#046463' : '#723582' ,
                         fontSize: '0.8rem',
                       },
                     },
@@ -135,13 +148,25 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                     '--Switch-thumbSize': '27px',
                     '--Switch-trackWidth': '64px',
                     '--Switch-trackHeight': '31px',
+                    '& .MuiSwitch-thumb': {
+                        backgroundColor: settings.special && enabledSwitches === 1
+                        ? disabledColor
+                        : (settings.special ? '#046463' : '#723582'),  
+                        boxShadow: 'none',
+                        transition: 'background-color 0.2s'
+                      },
                   }}
                 />
             </div>
             <div className="modal-input">
-                <label>Contains lower case</label>
+                <label style={{
+                  color: settings.lowercase && enabledSwitches === 1 ? disabledColor : undefined,
+                  transition: 'color 0.2s'
+                }}>
+                  CONTAINS LOWER CASE</label>
                 <Switch
                   checked={settings.lowercase}
+                  disabled={settings.lowercase && enabledSwitches === 1}
                   onChange={(e) => setSettings({ ...settings, lowercase: e.target.checked })}
                   slotProps={{
                     track: {
@@ -154,7 +179,7 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                       sx: {
                         justifyContent: 'space-around',
                         backgroundColor: '#000',
-                        color: settings.numbers ? '#723582': '#046463' ,
+                        color: settings.lowercase ? '#046463' : '#723582',
                         fontSize: '0.8rem',
                       },
                     },
@@ -163,13 +188,25 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                     '--Switch-thumbSize': '27px',
                     '--Switch-trackWidth': '64px',
                     '--Switch-trackHeight': '31px',
+                    '& .MuiSwitch-thumb': {
+                        backgroundColor: settings.lowercase && enabledSwitches === 1
+                        ? disabledColor
+                        : (settings.lowercase ? '#046463' : '#723582'),  
+                        boxShadow: 'none',
+                        transition: 'background-color 0.2s'
+                      },
                   }}
                   />
             </div>
             <div className="modal-input">
-              <label>Contains upper case</label>
+              <label style={{
+                color: settings.uppercase && enabledSwitches === 1 ? disabledColor : undefined,
+                transition: 'color 0.2s'
+              }}>
+                CONTAINS UPPER CASE</label>
               <Switch
                 checked={settings.uppercase}
+                disabled={settings.uppercase && enabledSwitches === 1}
                 onChange={(e) => setSettings({ ...settings, uppercase: e.target.checked })}
                 slotProps={{
                   track: {
@@ -182,7 +219,7 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                     sx: {
                         justifyContent: 'space-around',
                         backgroundColor: '#000',
-                        color: settings.numbers ? '#723582': '#046463' ,
+                        color: settings.uppercase ? '#046463' : '#723582',
                         fontSize: '0.8rem',
                     },
                   },
@@ -191,46 +228,66 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                   '--Switch-thumbSize': '27px',
                   '--Switch-trackWidth': '64px',
                   '--Switch-trackHeight': '31px',
+                '& .MuiSwitch-thumb': {
+                    backgroundColor: settings.uppercase && enabledSwitches === 1
+                    ? disabledColor
+                    : (settings.uppercase ? '#046463' : '#723582'),  
+                    boxShadow: 'none',
+                    transition: 'background-color 0.2s'
+                  },
                 }}
               />
             </div>
             <div className="modal-input">
-                <label>Contains numbers</label>
-                <Switch
-                  checked={settings.numbers}
-                  onChange={(e) => setSettings({ ...settings, numbers: e.target.checked })}
-                  slotProps={{
-                    track: {
-                      children: (
-                        <React.Fragment>
-                          <span>OFF</span>
-                          <span>ON</span>
-                        </React.Fragment>
-                      ),
-                      sx: {
-                        justifyContent: 'space-around',
-                        backgroundColor: '#000',
-                        color: settings.numbers ? '#723582': '#046463' ,
-                        fontSize: '0.8rem',
-                      },
-                    },
-                  }}
-                  sx={{
-                    '--Switch-thumbSize': '27px',
-                    '--Switch-trackWidth': '64px',
-                    '--Switch-trackHeight': '31px',
-                    '--Switch-thumbBackground': settings.numbers ? '#723582' : '#046463',
-                  }}
-                />
+              <label style={{
+                  color: settings.numbers && enabledSwitches === 1 ? disabledColor : undefined,
+                  transition: 'color 0.2s'
+                }}>
+                CONTAINS NUMBERS</label>
+              <Switch
+                checked={settings.numbers}
+                disabled={settings.numbers && enabledSwitches === 1}
+                onChange={(e) => setSettings({ ...settings, numbers: e.target.checked })}
+                slotProps={{
+                track: {
+                  children: (
+                  <React.Fragment>
+                    <span>ON</span>
+                    <span>OFF</span>
+                  </React.Fragment>
+                  ),
+                  sx: {
+                  justifyContent: 'space-around',
+                  backgroundColor: '#000',
+                  color: settings.numbers ? '#046463' : '#723582',
+                  fontSize: '0.8rem',
+                  },
+                },
+                }}
+                sx={{
+                '--Switch-thumbSize': '27px',
+                '--Switch-trackWidth': '64px',
+                '--Switch-trackHeight': '31px',
+                '--Switch-thumbBorder': 'none',
+                '& .MuiSwitch-thumb': {
+                    backgroundColor: settings.numbers && enabledSwitches === 1
+                    ? disabledColor
+                    : (settings.numbers ? '#046463' : '#723582'),  
+                    boxShadow: 'none',
+                    transition: 'background-color 0.2s'
+                  },
+                }}
+              />
             </div>
             <div className="modal-input">
-                <label>Minimum number of special chars: {settings.minSpecial}</label>
+                <label>MINIMUM NUMBER OF SPECIAL CHARS: {settings.minSpecial}</label>
                 <Slider
                     value={settings.minSpecial}
                     min={1}
                     max={9}
                     sx={{ '--Slider-trackBackground': '#046463',
                           '--Slider-thumbColor': '#046463',
+                          '--Slider-thumbBackground': '#046463',
                           '--Slider-valueLabelBackground': '#046463',
                         '&:hover': {
                             '--Slider-trackBackground': '#046463',
@@ -241,18 +298,20 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                             '--Slider-trackBackground': '#046463',
                             '--Slider-thumbColor': '#046463',
                             '--Slider-valueLabelBackground': '#046463',
-                        },}}
+                        },
+                      }}
                     onChange={(_, newValue) => setSettings({ ...settings, minSpecial: newValue as number })}
                     valueLabelDisplay="auto"/>
             </div>
             <div className="modal-input">
-                <label>Minimum number of numbers: {settings.minNumbers}</label>
+                <label>MINIMUM NUMBER OF NUMBERS: {settings.minNumbers}</label>
                 <Slider
                     value={settings.minNumbers}
                     min={1}
                     max={9}
                     sx={{ '--Slider-trackBackground': '#046463',
                           '--Slider-thumbColor': '#046463',
+                          '--Slider-thumbBackground': '#046463',
                           '--Slider-valueLabelBackground': '#046463',
                         '&:hover': {
                             '--Slider-trackBackground': '#046463',

@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router";
-import { Link } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../components/Header"
 import { useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 import "../styles/Login.css"
 import patternBotLogin from "../assets/wzorki2.svg"
 import patternTopLogin from "../assets/wzorki3.svg"
@@ -11,9 +12,11 @@ function Login(){
     const [error, setError] = useState<string | null>(null);
     const [email, setEmail] = useState<string>();
     const [password, setPassword] = useState<string>();
+    const auth = useAuth();
+
 
     const handleSignin = () => {
-        navigate("/login")
+        auth.login(email || "", password || "")
     }
 
     return(
@@ -41,7 +44,7 @@ function Login(){
                         <div className="password">
                             <label>Password:</label>
                             <br/>
-                            <input type="email" 
+                            <input type="password" 
                             placeholder="super secret password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}/>

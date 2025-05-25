@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import MainLogo from "../assets/logo1.svg"
 import patternTop from "../assets/wzorki1.svg"
 import computer from "../assets/komputer.svg"

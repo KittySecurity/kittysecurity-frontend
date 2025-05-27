@@ -6,6 +6,7 @@ import Vault from './pages/Vault'
 import StrongPassword from './pages/StrongPassword'
 import ForgotPassword from './pages/ForgotPassword'
 import { AuthProvider, useAuth } from './hooks/useAuth'
+import { ToastContainer } from 'react-toastify';
 import './App.css'
 
 const ProtectedRoute = () => {
@@ -35,6 +36,7 @@ function App() {
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <ToastContainer />
       </AuthProvider>
     </BrowserRouter>
   )

@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
       navigate("/vault");
     } catch (err) {
       console.error("Login failed", err);
+      throw err;
     }
   };
 

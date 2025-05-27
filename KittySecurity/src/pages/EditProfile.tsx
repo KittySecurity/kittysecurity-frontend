@@ -18,14 +18,21 @@ function EditProfile(){
     const [passwordConfiramtion, setPasswordConfirmation] = useState<string>();
 
 
-    const handleEditProfile = () => {
+    const handleEditProfile = (e) => {
+        e.preventDefault();
         if (password !== passwordConfiramtion) {
             setError("Passwords do not match");
             return;
         }else{
             // handle edit profile data in backend
-            setMessage(`A recovery email has been sent to ${email}`);
+            // jeśli success:
+            setMessage("Your profile data have been changed");
+            // else:
+            setError("Error occured on the server side");
         }
+        setTimeout(() => {
+            navigate('/vault');
+        }, 3000);
     }
 
     const handleCancel = () => {

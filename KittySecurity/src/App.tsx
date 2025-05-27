@@ -1,17 +1,19 @@
-import {BrowserRouter, Routes, Route, Navigate, Outlet} from 'react-router'
+import {BrowserRouter, Routes, Route, Navigate, Outlet} from "react-router-dom"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Vault from './pages/Vault'
 import StrongPassword from './pages/StrongPassword'
 import ForgotPassword from './pages/ForgotPassword'
+import { AuthProvider, useAuth } from './hooks/useAuth'
+import { ToastContainer } from 'react-toastify';
 import './App.css'
 import EditProfile from './pages/EditProfile'
 
 const ProtectedRoute = () => {
-  const isAuthenticated = true
+  const auth = useAuth()
 
-  if (!isAuthenticated) {
+  if (auth.accessToken === null) {
     return <Navigate to="/login" />
   }
 

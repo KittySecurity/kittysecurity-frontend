@@ -48,34 +48,38 @@ function Vault() {
                 </div>
                 <div className="passwords">
                     <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Login</th>
-                            <th>Url</th>
-                            <th>Password</th>
-                            <th>Action</th>
-                        </tr>
-                        <PasswordEntry id={{
-                            name: "Example Site",
-                            url: "https://example.com",
-                            login: "user@example.com",
-                            encrypted: "encryptedPassword123",
-                            IV: "ivExample123"
-                        }}/>
-                        <PasswordEntry id={{
-                            name: "Example Site",
-                            url: "https://example.com",
-                            login: "user@example.com",
-                            encrypted: "encryptedPassword123",
-                            IV: "ivExample123"
-                        }}/>
-                        <PasswordEntry id={{
-                            name: "Example Site",
-                            url: "https://example.com",
-                            login: "user@example.com",
-                            encrypted: "encryptedPassword123",
-                            IV: "ivExample123"
-                        }}/>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Login</th>
+                                <th>Url</th>
+                                <th>Password</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <PasswordEntry id={{
+                                name: "Example Site",
+                                url: "https://example.com",
+                                login: "user@example.com",
+                                encrypted: "encryptedPassword123",
+                                IV: "ivExample123"
+                            }}/>
+                            <PasswordEntry id={{
+                                name: "Example Site",
+                                url: "https://example.com",
+                                login: "user@example.com",
+                                encrypted: "encryptedPassword123",
+                                IV: "ivExample123"
+                            }}/>
+                            <PasswordEntry id={{
+                                name: "Example Site",
+                                url: "https://example.com",
+                                login: "user@example.com",
+                                encrypted: "encryptedPassword123",
+                                IV: "ivExample123"
+                            }}/>
+                        </tbody>
                     </table>
                 </div>
             </div>

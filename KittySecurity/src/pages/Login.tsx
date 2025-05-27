@@ -1,19 +1,27 @@
-import { useNavigate } from "react-router";
-import { Link } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../components/Header"
 import { useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 import "../styles/Login.css"
 import patternBotLogin from "../assets/wzorki2.svg"
 import patternTopLogin from "../assets/wzorki3.svg"
 
 function Login(){
-    const navigate = useNavigate();
     const [error, setError] = useState<string | null>(null);
-    const [email, setEmail] = useState<string>();
-    const [password, setPassword] = useState<string>();
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const auth = useAuth();
 
-    const handleSignin = () => {
-        navigate("/login")
+
+    const handleSignin = (e?: React.FormEvent) => {
+        if (e) e.preventDefault();
+        try {
+            auth.login(email, password);
+        } catch (err) {
+            console.error("Login failed", err);
+            setError("Invalid email or password");
+        }
     }
 
     return(
@@ -41,11 +49,12 @@ function Login(){
                         <div className="password">
                             <label>Password:</label>
                             <br/>
-                            <input type="email" 
+                            <input type="password" 
                             placeholder="super secret password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}/>
                         </div>
+                        {error && <p className="error">{error}</p>}
                         <Link className="forgot" to="/forgot-password">I FORGOT MY PASSWORD</Link>
                         <div>
                             <button type="submit">SIGN IN</button>

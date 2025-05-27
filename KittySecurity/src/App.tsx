@@ -6,6 +6,7 @@ import Vault from './pages/Vault'
 import StrongPassword from './pages/StrongPassword'
 import ForgotPassword from './pages/ForgotPassword'
 import './App.css'
+import EditProfile from './pages/EditProfile'
 
 const ProtectedRoute = () => {
   const isAuthenticated = true
@@ -28,6 +29,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword/>} />
         <Route path="/strong-password" element={<StrongPassword/>} />
         <Route path="/about" element={<div>About</div>} />
+        <Route path="/edit-profile" element={<EditProfile/>} />
         <Route element={<ProtectedRoute />}>
         <Route path="/vault" element={<Vault/>} />
         </Route>

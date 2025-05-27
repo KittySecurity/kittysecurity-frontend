@@ -6,11 +6,17 @@ import "../styles/Vault.css"
 import User from "../assets/user.svg"
 import Plus from "../assets/add.svg"
 import ColorPlus from "../assets/colorAdd.svg"
+import { useNavigate } from "react-router";
 
 
 function Vault() {
+    const navigate = useNavigate();
     const [addPassword, setAddPassword] = useState(false);
     const [newPassword, setNewPassword] = useState(false);
+
+    const handleEditProfile = () => {
+        navigate("/edit-profile")
+    }
 
     return(
         <div className="vault-header">
@@ -22,7 +28,7 @@ function Vault() {
                     <h1>XXXXXXXX</h1>
                     <h1>E-MAIL</h1>
                     <h1>XXXXXXXX</h1>
-                    <button className="edit">Edit Profile</button>
+                    <button className="edit" onClick={handleEditProfile}>Edit Profile</button>
                 </div>
                 <div className="texts">
                     <div className="your-password">

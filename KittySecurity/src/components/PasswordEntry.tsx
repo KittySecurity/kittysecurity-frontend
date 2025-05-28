@@ -1,5 +1,5 @@
 import { useState } from "react";
- import { ToastContainer, toast } from 'react-toastify';
+ import { toast } from 'react-toastify';
 import Eye from "../assets/eye.svg"
 import EyeLash from "../assets/eyelash.svg"
 import Copy from "../assets/copy.svg"

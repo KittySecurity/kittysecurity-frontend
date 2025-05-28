@@ -10,7 +10,7 @@ export const useSessionStorage = (keyName: string, defaultValue: string | null) 
         window.sessionStorage.setItem(keyName, JSON.stringify(defaultValue));
         return defaultValue;
       }
-    } catch (err) {
+    } catch {
       return defaultValue;
     }
   });

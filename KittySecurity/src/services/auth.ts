@@ -14,10 +14,10 @@ export async function login(email: string, master_hash: string) {
 }
 
 export async function register(username: string, email: string, master_hash: string) {
-  const response = await axios.post("/auth/register", {
-    username,
-    email,
-    master_hash,
+  const response = await axios.post("http://localhost:8080/auth/register", {
+    "username": username,
+    "email": email,
+    "master_hash": master_hash,
   });
   return response.data;
 }

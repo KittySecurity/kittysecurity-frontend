@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Header from "../components/Header"
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { deriveMasterKey, deriveMasterHash } from "../services/crypto";
+import { useSessionStorage } from "../hooks/useSessionStorage";
 import "../styles/Login.css"
 import patternBotLogin from "../assets/wzorki2.svg"
 import patternTopLogin from "../assets/wzorki3.svg"
@@ -11,13 +12,20 @@ function Login(){
     const [error, setError] = useState<string | null>(null);
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [masterKey, setMasterKey] = useSessionStorage("mk", null);
     const auth = useAuth();
 
 
     const handleSignin = (e?: React.FormEvent) => {
         if (e) e.preventDefault();
         try {
-            auth.login(email, password);
+            setMasterKey(deriveMasterKey(password, email));
+            if (!masterKey) {
+                throw new Error("Master key derivation failed");
+            }
+            const masterHash = deriveMasterHash(password, masterKey);
+
+            auth.login(email, masterHash);
         } catch (err) {
             console.error("Login failed", err);
             setError("Invalid email or password");

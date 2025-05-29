@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom';
 import Logo from "../assets/logo2.svg"
+import { useSessionStorage } from '../hooks/useSessionStorage';
 import "../styles/Header.css"
+import { useAuth } from '../hooks/useAuth';
 
 
 const Header = () => {
+  const [token, ] = useSessionStorage("token", null);
+  const auth = useAuth();
+
 
   const handleLogout = () => {
-    localStorage.removeItem('login');
+    if (token) {
+      auth.logout();
+    }
   }
 
   return (
@@ -19,9 +26,9 @@ const Header = () => {
         </div>
         <div className="nav-list">
           {
-            localStorage.getItem('login') === "true" ? (
+            token !== null ? (
               <>
-              <Link to="/plants" className="nav-item">Vault</Link>
+              <Link to="/vault" className="nav-item">Vault</Link>
               <Link to="/" className="nav-item" onClick={handleLogout}>Logout</Link>
               </>
             ) : (

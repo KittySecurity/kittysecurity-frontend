@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router";
 import Header from "../components/Header"
 import { useState, useEffect } from "react";
+import { deriveMasterKey, deriveMasterHash } from "../services/crypto";
+import { register as apiRegister } from "../services/auth";
 import "../styles/Register.css"
 import patternBotReg from "../assets/wzorki2.svg"
 import patternTopReg from "../assets/wzorki3.svg"
@@ -22,8 +24,26 @@ function Register(){
             setError("Passwords do not match");
             return;
         }else{
+            if (!password || !email || !login) {
+                setError("Email and password are required");
+                return;
+            }
             navigate("/login");
-            setError(null);
+            const masterKey = deriveMasterKey(password, email);
+            if (!masterKey) {
+                throw new Error("Master key derivation failed");
+            }
+            const masterHash = deriveMasterHash(password, masterKey);
+
+            apiRegister(login, email, masterHash)
+                .then(() => {
+                    console.log("Registration successful");
+                    navigate("/login");
+                })
+                .catch((err) => {
+                    console.error("Registration failed", err);
+                    setError("Registration failed. Please try again.");
+                });
         }
     }
 

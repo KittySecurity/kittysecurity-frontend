@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router";
 import Header from "../components/Header"
 import { useState } from "react";
@@ -7,17 +6,16 @@ import patternBot from "../assets/wzorki2.svg"
 import patternTop from "../assets/wzorki3.svg"
 
 function ForgotPassword() {
-    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
-    const validateEmail = (email) => {
+    const validateEmail = (email: string) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     }
 
-    const handleForgotPassword = (e) => {
+    const handleForgotPassword = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
         setMessage("");

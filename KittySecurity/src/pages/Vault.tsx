@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import PasswordEntry from "../components/PasswordEntry";
 import AddPassword from "../components/AddPassword";
@@ -7,12 +7,31 @@ import User from "../assets/user.svg"
 import Plus from "../assets/add.svg"
 import ColorPlus from "../assets/colorAdd.svg"
 import { useNavigate } from "react-router";
+import userService from "../services/user.service";
+import { useSessionStorage } from "../hooks/useSessionStorage";
 
 
 function Vault() {
     const navigate = useNavigate();
     const [addPassword, setAddPassword] = useState(false);
     const [newPassword, setNewPassword] = useState(false);
+    const [user, setUser] = useState({
+        id: 0,
+        username: "",
+        email: "",
+        created_at: "",
+        updated_at: ""
+    });
+    const [, setUserData] = useSessionStorage("userData", null);
+
+    useEffect(() => {
+        userService.getUser()
+            .then((response) => {
+                setUser(response);
+                setUserData(response);
+            });
+    }, [setUserData]);
+
 
     const handleEditProfile = () => {
         navigate("/edit-profile")
@@ -25,9 +44,9 @@ function Vault() {
                 <div className="profil">
                     <img src={User} alt="user" />
                     <h1>USERNAME</h1>
-                    <h1>XXXXXXXX</h1>
+                    <h1>{user.username}</h1>
                     <h1>E-MAIL</h1>
-                    <h1>XXXXXXXX</h1>
+                    <h1>{user.email}</h1>
                     <button className="edit" onClick={handleEditProfile}>Edit Profile</button>
                 </div>
                 <div className="texts">

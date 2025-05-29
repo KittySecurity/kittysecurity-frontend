@@ -2,6 +2,9 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import Header from "../components/Header"
 import { useState, useEffect } from "react";
+import userService from "../services/user.service";
+import { deriveMasterKey, deriveMasterHash } from "../services/crypto";
+import { useSessionStorage } from "../hooks/useSessionStorage";
 import "../styles/Register.css"
 import patternBotReg from "../assets/wzorki2.svg"
 import patternTopReg from "../assets/wzorki3.svg"
@@ -16,24 +19,51 @@ function EditProfile(){
     const [password, setPassword] = useState<string>();
     const [strength, setStrength] = useState<number>(0.0);
     const [passwordConfiramtion, setPasswordConfirmation] = useState<string>();
+    const [userData, ] = useSessionStorage("userData", null);
+    const [masterKey, setMasterKey] = useSessionStorage("mk", null);
 
 
-    const handleEditProfile = (e) => {
+   const handleEditProfile = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (password !== passwordConfiramtion) {
-            setError("Passwords do not match");
-            return;
-        }else{
-            // handle edit profile data in backend
-            // jeśli success:
-            setMessage("Your profile data have been changed");
-            // else:
-            setError("Error occured on the server side");
+
+        // Jeśli użytkownik chce zmienić hasło, oba pola muszą być wypełnione i zgodne
+        if (password || passwordConfiramtion) {
+            if (!password || !passwordConfiramtion) {
+                setError("Fill both password fields to change password");
+                return;
+            }
+            if (password !== passwordConfiramtion) {
+                setError("Passwords do not match");
+                return;
+            }
         }
-        setTimeout(() => {
-            navigate('/vault');
-        }, 3000);
-    }
+
+        // Przygotuj payload tylko z polami, które użytkownik zmienił
+        const payload: { username?: string; email?: string; master_hash?: string } = {};
+        if (login && login.trim() !== "") payload.username = login;
+        if (email && email.trim() !== "") payload.email = email;
+        if (password && password.trim() !== "") {
+            setMasterKey(deriveMasterKey(password, userData.email));
+            payload.master_hash = deriveMasterHash(password, masterKey);
+        };
+
+        // Jeśli nie zmieniono żadnego pola, nie wysyłaj żądania
+        if (Object.keys(payload).length === 0) {
+            setError("No changes to update");
+            return;
+        }
+
+        try {
+            await userService.updateUser(payload);
+            setMessage("Your profile data have been changed");
+            setError(null);
+            setTimeout(() => {
+                navigate('/vault');
+            }, 2000);
+        } catch {
+            setError("Error occurred on the server side");
+        }
+    };
 
     const handleCancel = () => {
          navigate("/vault");

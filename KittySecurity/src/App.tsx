@@ -24,19 +24,22 @@ const ProtectedRoute = () => {
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/forgot-password" element={<ForgotPassword/>} />
-        <Route path="/strong-password" element={<StrongPassword/>} />
-        <Route path="/about" element={<div>About</div>} />
-        <Route path="/edit-profile" element={<EditProfile/>} />
-        <Route element={<ProtectedRoute />}>
-        <Route path="/vault" element={<Vault/>} />
-        </Route>
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/forgot-password" element={<ForgotPassword/>} />
+          <Route path="/strong-password" element={<StrongPassword/>} />
+          <Route path="/about" element={<div>About</div>} />
+          <Route path="/edit-profile" element={<EditProfile/>} />
+          <Route element={<ProtectedRoute />}>
+          <Route path="/vault" element={<Vault/>} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <ToastContainer/>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

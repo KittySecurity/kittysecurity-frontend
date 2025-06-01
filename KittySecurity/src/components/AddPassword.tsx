@@ -122,6 +122,7 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
               <button onClick={handleSavePassword}>SAVE</button>
               <button onClick={onClose}>CANCEL</button>
             </div>
+             {error && <div className="error">{error}</div>}
           </>) : (
             <>
               <div className="modal-input">

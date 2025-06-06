@@ -4,6 +4,8 @@ import Eye from "../assets/eye.svg"
 import EyeLash from "../assets/eyelash.svg"
 import Copy from "../assets/copy.svg"
 import ColorCopy from "../assets/colorCopy.svg"
+import Delete from "../assets/delete.svg"
+import DeleteGreen from "../assets/deleteGreen.svg"
 import "../styles/PasswordEntry.css"
 
 type PasswordEntryProps = {
@@ -20,6 +22,7 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
     const { name, url, login, encrypted } = id;
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [copySate, setCopyState] = useState(false);
+    const [deleteState, setDeleteState] = useState(false);
 
 
     const handlePasswordVisible = () => {
@@ -44,6 +47,10 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
 
     }
 
+    const handleDeletePassword = () => {
+
+    }
+
     return (
         <>
         <tr className="password-entry">
@@ -65,6 +72,10 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
                     onClick={handlePasswordVisible}
                     style={{ cursor: "pointer" }}
                 />
+                <img src={deleteState ? DeleteGreen: Delete} alt="delete"
+                onMouseDown={() => setDeleteState(true)}
+                onMouseUp={() => setDeleteState(false)}
+                onClick={handleDeletePassword}/>
             </td>
         </tr>
         </>

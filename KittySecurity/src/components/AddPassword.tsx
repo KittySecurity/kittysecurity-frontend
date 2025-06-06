@@ -4,6 +4,9 @@ import { Switch, Slider } from '@mui/joy';
 import "../styles/AddPassowrd.css"
 import Generate from "../assets/generate.svg"
 import Settings from "../assets/settings.svg"
+import passwordService from "../services/password.service";
+import { encryptAESCBC, generateIV } from "../services/crypto";
+import { useSessionStorage } from "../hooks/useSessionStorage";
 
 type PasswordSettings = {
     length: number;
@@ -28,8 +31,13 @@ const defaultSettings: PasswordSettings = {
 
 const AddPassword = ({ onClose }: { onClose: () => void }) => {
   const [newPassword, setNewPassword] = useState("");
+  const [name, setName] = useState("");
+  const [url, setUrl] = useState("");
+  const [login, setLogin] = useState("");
   const [showSettings, setShowSettings] = useState(false);
   const [settings, setSettings] = useState<PasswordSettings>(defaultSettings);
+  const [masterKey] = useSessionStorage("mk", null);
+  const [error, setError] = useState<string | null>(null);
   const enabledSwitches = [
     settings.lowercase,
     settings.uppercase,
@@ -48,6 +56,25 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
         setNewPassword(pass);
   }
 
+  const handleSavePassword = async () => {
+
+    const IV = generateIV();
+    const encrypted = encryptAESCBC(newPassword, masterKey, IV); 
+
+    try {
+      await passwordService.addPassword({
+        name,
+        url,
+        login,
+        encrypted,
+        IV,
+      });
+      onClose();
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "An error occurred while saving the password.");
+    }
+  };
+
   return (
       <div className="modal">
         <div className="modal-content">
@@ -59,6 +86,7 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                 <input
                     type="text"
                     placeholder='Platform Name'
+                    onChange={(e) => setName(e.target.value)}
                 />
             </div>
             <div className="modal-input">
@@ -66,6 +94,7 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
               <input
                   type="text"
                   placeholder='email@example.com'
+                  onChange={(e) => setLogin(e.target.value)}
               />
               </div>
             <div className="modal-input">
@@ -73,6 +102,7 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
                 <input
                     type="text"
                     placeholder='https://example.com'
+                    onChange={(e) => setUrl(e.target.value)}
                 />
             </div>
             <div className="modal-input">
@@ -89,9 +119,10 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
               </div>
             </div>
             <div className="modal-actions">
-              <button >SAVE</button>
+              <button onClick={handleSavePassword}>SAVE</button>
               <button onClick={onClose}>CANCEL</button>
             </div>
+             {error && <div className="error">{error}</div>}
           </>) : (
             <>
               <div className="modal-input">

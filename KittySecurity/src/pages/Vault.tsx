@@ -9,6 +9,7 @@ import ColorPlus from "../assets/colorAdd.svg"
 import { useNavigate } from "react-router";
 import userService from "../services/user.service";
 import { useSessionStorage } from "../hooks/useSessionStorage";
+import passwordService from "../services/password.service";
 
 
 function Vault() {
@@ -22,6 +23,7 @@ function Vault() {
         created_at: "",
         updated_at: ""
     });
+    const [passwordEntries, setPasswordEntries] = useState<any[]>([]);
     const [, setUserData] = useSessionStorage("userData", null);
 
     useEffect(() => {
@@ -29,6 +31,17 @@ function Vault() {
             .then((response) => {
                 setUser(response);
                 setUserData(response);
+            });
+
+        passwordService.getAllPasswords()
+            .then((response) => {
+                if (response.entries) {
+                    const entriesArray = Object.values(response.entries);
+                    setPasswordEntries(entriesArray);
+                }
+            })
+            .catch((err) => {
+                console.error(err)
             });
     }, [setUserData]);
 
@@ -77,27 +90,9 @@ function Vault() {
                             </tr>
                         </thead>
                         <tbody>
-                            <PasswordEntry id={{
-                                name: "Example Site",
-                                url: "https://example.com",
-                                login: "user@example.com",
-                                encrypted: "encryptedPassword123",
-                                IV: "ivExample123"
-                            }}/>
-                            <PasswordEntry id={{
-                                name: "Example Site",
-                                url: "https://example.com",
-                                login: "user@example.com",
-                                encrypted: "encryptedPassword123",
-                                IV: "ivExample123"
-                            }}/>
-                            <PasswordEntry id={{
-                                name: "Example Site",
-                                url: "https://example.com",
-                                login: "user@example.com",
-                                encrypted: "encryptedPassword123",
-                                IV: "ivExample123"
-                            }}/>
+                        {passwordEntries.map((entry, idx) => (
+                            <PasswordEntry key={idx} id={entry} />
+                        ))}
                         </tbody>
                     </table>
                 </div>

@@ -4,6 +4,7 @@ import Eye from "../assets/eye.svg"
 import EyeLash from "../assets/eyelash.svg"
 import Copy from "../assets/copy.svg"
 import ColorCopy from "../assets/colorCopy.svg"
+import Delete from "../assets/delete.svg"
 import "../styles/PasswordEntry.css"
 
 type PasswordEntryProps = {
@@ -65,6 +66,7 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
                     onClick={handlePasswordVisible}
                     style={{ cursor: "pointer" }}
                 />
+                <img src={Delete} alt="delete" />
             </td>
         </tr>
         </>

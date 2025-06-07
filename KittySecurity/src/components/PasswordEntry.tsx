@@ -41,7 +41,9 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
     }
 
     const handleCopyPassword = () => {
-        navigator.clipboard.writeText(encrypted);
+        const decryptedPassword =  decryptAESCBC(encrypted, masterKey, IV);
+        setDecrypted(decryptedPassword);
+        navigator.clipboard.writeText(decryptedPassword);
         toast("✔️ Password copied to clipboard!", {
             position: "top-right",
             autoClose: 1000,

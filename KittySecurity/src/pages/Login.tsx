@@ -19,10 +19,13 @@ function Login(){
     const handleSignin = (e?: React.FormEvent) => {
         if (e) e.preventDefault();
         try {
-            setMasterKey(deriveMasterKey(password, email));
-            if (!masterKey) {
+            const derivedKey = deriveMasterKey(password, email);
+            if (!derivedKey) {
                 throw new Error("Master key derivation failed");
             }
+            setMasterKey(derivedKey);
+            
+            console.log(masterKey)
             const masterHash = deriveMasterHash(password, masterKey);
 
             auth.login(email, masterHash);

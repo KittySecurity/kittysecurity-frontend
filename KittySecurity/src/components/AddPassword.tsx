@@ -29,7 +29,7 @@ const defaultSettings: PasswordSettings = {
 };
 
 
-const AddPassword = ({ onClose }: { onClose: () => void }) => {
+const AddPassword = ({ onClose, onPasswordAdded, }: { onClose: () => void , onPasswordAdded?: () => void}) => {
   const [newPassword, setNewPassword] = useState("");
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
@@ -69,6 +69,7 @@ const AddPassword = ({ onClose }: { onClose: () => void }) => {
         encrypted,
         IV,
       });
+      if (onPasswordAdded) onPasswordAdded();
       onClose();
     } catch (error) {
       setError(error instanceof Error ? error.message : "An error occurred while saving the password.");

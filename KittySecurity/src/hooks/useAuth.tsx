@@ -39,11 +39,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
   };
 
   const logout = () => {
-    setAccessToken(null);
-    setRefreshToken(null);
-    setExpiresIn(null);
-    setRefreshTokenExpiresIn(null);
-    setAccessTokenType(null);
+    sessionStorage.clear()
     navigate("/login", { replace: true });
   };
 

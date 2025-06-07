@@ -7,6 +7,8 @@ import ColorCopy from "../assets/colorCopy.svg"
 import Delete from "../assets/delete.svg"
 import DeleteGreen from "../assets/deleteGreen.svg"
 import "../styles/PasswordEntry.css"
+import { useSessionStorage } from "../hooks/useSessionStorage";
+import { decryptAESCBC } from "../services/crypto";
 
 type PasswordEntryProps = {
   id: {
@@ -19,17 +21,22 @@ type PasswordEntryProps = {
 }
 
 const PasswordEntire = ({id} : PasswordEntryProps) => {
-    const { name, url, login, encrypted } = id;
+    const { name, url, login, encrypted, IV } = id;
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [copySate, setCopyState] = useState(false);
     const [deleteState, setDeleteState] = useState(false);
+    const [masterKey, ] = useSessionStorage("mk", null);
+    const [decrypted, setDecrypted] = useState("");
 
 
     const handlePasswordVisible = () => {
+        const decryptedPassword =  decryptAESCBC(encrypted, masterKey, IV);
+        setDecrypted(decryptedPassword);
         if (passwordVisible){
             setPasswordVisible(false);
         }else{
-            setPasswordVisible(true)
+            
+            setPasswordVisible(true);
         }
     }
 
@@ -59,7 +66,7 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
             <td className="password-entry-column">{login}</td>
             <td className="password-entry-column"><a href={url} target="_blank">{url}</a></td>
             <td className="password-entry-column">
-                {passwordVisible ? encrypted : "*".repeat(encrypted.length)}
+                {passwordVisible ? decrypted : "*".repeat(encrypted.length)}
             </td>
             <td className="password-entry-column password-column-round-right">
                 <img src={copySate ? ColorCopy : Copy} alt="copy"

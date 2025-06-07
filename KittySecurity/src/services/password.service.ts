@@ -13,7 +13,7 @@ class PasswordService {
       throw new Error("Invalid password data provided");
     }
     try {
-      const response = await api.post("/passwords", passwordData);
+      const response = await api.post("/password", passwordData);
       return response.data;
     } catch (error) {
       console.error("Error adding password:", error);
@@ -24,6 +24,7 @@ class PasswordService {
   async getAllPasswords() {
     try {
       const response = await api.get("/passwords");
+      console.log(response.data)
       return response.data;
     } catch (error) {
       console.error("Error fetching passwords:", error);

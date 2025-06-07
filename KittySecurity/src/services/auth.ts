@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function login(email: string, master_hash: string) {
   try {
-    const response = await axios.post("http://localhost:8080/auth/login", {
+    const response = await axios.post("/api/auth/login", {
       "email": email,
       "master_hash": master_hash,
     });
@@ -14,7 +14,7 @@ export async function login(email: string, master_hash: string) {
 }
 
 export async function register(username: string, email: string, master_hash: string) {
-  const response = await axios.post("http://localhost:8080/auth/register", {
+  const response = await axios.post("/api/auth/register", {
     "username": username,
     "email": email,
     "master_hash": master_hash,

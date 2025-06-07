@@ -26,6 +26,20 @@ function Vault() {
     const [passwordEntries, setPasswordEntries] = useState<any[]>([]);
     const [, setUserData] = useSessionStorage("userData", null);
 
+    const fetchPasswords = () => {
+        passwordService.getAllPasswords()
+            .then((response) => {
+                if (response) {
+                    const entriesArray = Object.values(response);
+                    console.log(entriesArray)
+                    setPasswordEntries(entriesArray);
+                }
+            })
+            .catch((err) => {
+                console.error(err)
+            });
+    };
+
     useEffect(() => {
         userService.getUser()
             .then((response) => {
@@ -33,17 +47,8 @@ function Vault() {
                 setUserData(response);
             });
 
-        passwordService.getAllPasswords()
-            .then((response) => {
-                if (response.entries) {
-                    const entriesArray = Object.values(response.entries);
-                    setPasswordEntries(entriesArray);
-                }
-            })
-            .catch((err) => {
-                console.error(err)
-            });
-    }, [setUserData]);
+        fetchPasswords();
+    }, []);
 
 
     const handleEditProfile = () => {
@@ -98,7 +103,11 @@ function Vault() {
                 </div>
             </div>
             {
-                newPassword && (<AddPassword onClose={() => setNewPassword(false)}/>)
+                newPassword && (                
+                <AddPassword
+                    onClose={() => setNewPassword(false)}
+                    onPasswordAdded={fetchPasswords} // Pass the callback
+                />)
             }
         </div>
     );

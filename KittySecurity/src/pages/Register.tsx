@@ -19,7 +19,8 @@ function Register(){
     const [passwordConfiramtion, setPasswordConfirmation] = useState<string>();
 
 
-    const handleSignup = () => {
+    const handleSignup = (event: React.FormEvent) => {
+        event.preventDefault();
         if (password !== passwordConfiramtion) {
             setError("Passwords do not match");
             return;
@@ -28,7 +29,7 @@ function Register(){
                 setError("Email and password are required");
                 return;
             }
-            navigate("/login");
+            
             const masterKey = deriveMasterKey(password, email);
             if (!masterKey) {
                 throw new Error("Master key derivation failed");

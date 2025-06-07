@@ -20,9 +20,7 @@ function Login(){
         if (e) e.preventDefault();
         try {
             const derivedKey = deriveMasterKey(password, email);
-            if (!derivedKey) {
-                throw new Error("Master key derivation failed");
-            }
+            
             setMasterKey(derivedKey);
             
             console.log(masterKey)

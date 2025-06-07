@@ -47,14 +47,55 @@ const AddPassword = ({ onClose, onPasswordAdded, }: { onClose: () => void , onPa
   const disabledColor = '#bdbdbd';
 
 
-  const handleGeneratePassword = () => {
-        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=";
-        let pass = "";
-        for (let i = 0; i < 16; i++) {
-            pass += chars.charAt(Math.floor(Math.random() * chars.length));
+const handleGeneratePassword = () => {
+    const { length, lowercase, uppercase, numbers, special, minNumbers, minSpecial } = settings;
+
+    let charset = "";
+    if (lowercase) charset += "abcdefghijklmnopqrstuvwxyz";
+    if (uppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (numbers) charset += "0123456789";
+    if (special) charset += "!@#$%^&*()_+-=";
+
+    if (!charset) {
+        setError("At least one character type must be enabled.");
+        return;
+    }
+
+    let password = "";
+
+    // Ensure minimum numbers
+    let nums = "";
+    if (numbers) {
+        for (let i = 0; i < minNumbers; i++) {
+            nums += "0123456789".charAt(Math.floor(Math.random() * 10));
         }
-        setNewPassword(pass);
-  }
+    }
+
+    // Ensure minimum special chars
+    let specials = "";
+    if (special) {
+        const specialChars = "!@#$%^&*()_+-=";
+        for (let i = 0; i < minSpecial; i++) {
+            specials += specialChars.charAt(Math.floor(Math.random() * specialChars.length));
+        }
+    }
+
+    // Fill the rest of the password
+    let remainingLength = length - nums.length - specials.length;
+    let rest = "";
+    for (let i = 0; i < remainingLength; i++) {
+        rest += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+
+    // Combine and shuffle
+    password = (nums + specials + rest)
+        .split('')
+        .sort(() => 0.5 - Math.random())
+        .join('');
+
+    setNewPassword(password);
+    setError(null);
+};
 
   const handleSavePassword = async () => {
 

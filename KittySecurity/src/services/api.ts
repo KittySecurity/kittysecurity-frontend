@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:8080/api/v1",
+  baseURL: "/api/v1",
   headers: {
     "Content-Type": "application/json",
   },
@@ -15,6 +15,7 @@ instance.interceptors.request.use(
     if (type && token) {
       config.headers["Authorization"] = `${JSON.parse(type)} ${JSON.parse(token)}`;
     }
+    console.log(config)
     return config;
   },
   (error) => {

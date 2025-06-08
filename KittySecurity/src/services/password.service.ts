@@ -31,6 +31,18 @@ class PasswordService {
       throw error;
     }
   }
+
+  async deletePassword(id: number){
+    try{
+      const response = await api.delete(`/password/${id}`);
+      if (response.status !== 200){
+        throw Error("Somethig went wrong");
+      }
+    }catch (error){
+      console.error("Error deleting passwords:", error);
+      throw error;
+    }
+  }
 }
 
 export default new PasswordService();

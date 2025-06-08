@@ -9,19 +9,22 @@ import DeleteGreen from "../assets/deleteGreen.svg"
 import "../styles/PasswordEntry.css"
 import { useSessionStorage } from "../hooks/useSessionStorage";
 import { decryptAESCBC } from "../services/crypto";
+import passwordService from "../services/password.service";
 
 type PasswordEntryProps = {
   id: {
+    id: number
     name: string
     url: string
     login: string
     encrypted: string
     IV: string
-  }
+  },
+  onPasswordAdded?: () => void
 }
 
-const PasswordEntire = ({id} : PasswordEntryProps) => {
-    const { name, url, login, encrypted, IV } = id;
+const PasswordEntire = ({ id, onPasswordAdded } : PasswordEntryProps) => {
+    const { id: entryId, name, url, login, encrypted, IV } = id;
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [copySate, setCopyState] = useState(false);
     const [deleteState, setDeleteState] = useState(false);
@@ -56,8 +59,13 @@ const PasswordEntire = ({id} : PasswordEntryProps) => {
 
     }
 
-    const handleDeletePassword = () => {
-
+    const handleDeletePassword = async () => {
+        try{
+            await passwordService.deletePassword(entryId);
+            if (onPasswordAdded) onPasswordAdded();
+        }catch (error){
+            console.error(error)
+        }
     }
 
     return (

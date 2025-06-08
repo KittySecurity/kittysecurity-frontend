@@ -12,7 +12,7 @@ function Login(){
     const [error, setError] = useState<string | null>(null);
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [masterKey, setMasterKey] = useSessionStorage("mk", null);
+    const [, setMasterKey] = useSessionStorage("mk", null);
     const auth = useAuth();
 
 
@@ -23,8 +23,7 @@ function Login(){
             
             setMasterKey(derivedKey);
             
-            console.log(masterKey)
-            const masterHash = deriveMasterHash(password, masterKey);
+            const masterHash = deriveMasterHash(password, derivedKey);
 
             auth.login(email, masterHash);
         } catch (err) {

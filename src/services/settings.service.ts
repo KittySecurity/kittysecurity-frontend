@@ -13,7 +13,7 @@ type PasswordSettings = {
 class SettingsService {
     async getSettings(){
         try{
-            const response = await api.get("/settings");
+            const response = await api.get("v1/settings");
             return response.data;
         }catch (error){
             console.error("Error fetching settings:", error);
@@ -35,7 +35,7 @@ class SettingsService {
             throw new Error("Invalid settings data provided"); 
         }
         try {
-            const response = await api.put("/settings", settingsData);
+            const response = await api.put("/v1/settings", settingsData);
             return response.data;
         } catch (error) {
             console.error("Error updating settings:", error);

@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "./api";
 
 export async function login(email: string, master_hash: string) {
   try {
@@ -19,5 +20,12 @@ export async function register(username: string, email: string, master_hash: str
     "email": email,
     "master_hash": master_hash,
   });
+  return response.data;
+}
+
+export async function logout() {
+  const response = await api.post(
+    "/auth/logout",
+  );
   return response.data;
 }

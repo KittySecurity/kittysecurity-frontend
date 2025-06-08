@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSessionStorage } from "./useSessionStorage";
-import { login as apiLogin } from "../services/auth";
+import { login as apiLogin, logout as apiLogout } from "../services/auth";
 
 type AuthContextType = {
   accessToken: string | null;
@@ -38,8 +38,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
     }
   };
 
-  const logout = () => {
-    sessionStorage.clear()
+  const logout = async () => {
+    try {
+      await apiLogout();
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+    sessionStorage.clear();
     navigate("/login", { replace: true });
   };
 

@@ -13,7 +13,7 @@ class PasswordService {
       throw new Error("Invalid password data provided");
     }
     try {
-      const response = await api.post("/password", passwordData);
+      const response = await api.post("/v1/password", passwordData);
       return response.data;
     } catch (error) {
       console.error("Error adding password:", error);
@@ -23,7 +23,7 @@ class PasswordService {
 
   async getAllPasswords() {
     try {
-      const response = await api.get("/passwords");
+      const response = await api.get("v1/passwords");
       console.log(response.data)
       return response.data;
     } catch (error) {
@@ -34,7 +34,7 @@ class PasswordService {
 
   async deletePassword(id: number){
     try{
-      const response = await api.delete(`/password/${id}`);
+      const response = await api.delete(`v1/password/${id}`);
       if (response.status !== 200){
         throw Error("Somethig went wrong");
       }

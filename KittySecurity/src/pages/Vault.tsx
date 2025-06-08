@@ -31,7 +31,6 @@ function Vault() {
             .then((response) => {
                 if (response) {
                     const entriesArray = Object.values(response);
-                    console.log(entriesArray)
                     setPasswordEntries(entriesArray);
                 }
             })

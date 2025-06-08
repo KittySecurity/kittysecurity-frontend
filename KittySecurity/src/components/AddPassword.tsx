@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as React from 'react';
 import { Switch, Slider } from '@mui/joy';
 import "../styles/AddPassowrd.css"
@@ -7,16 +7,8 @@ import Settings from "../assets/settings.svg"
 import passwordService from "../services/password.service";
 import { encryptAESCBC, generateIV } from "../services/crypto";
 import { useSessionStorage } from "../hooks/useSessionStorage";
+import settingsService, { PasswordSettings } from "../services/settings.service";
 
-type PasswordSettings = {
-    length: number;
-    lowercase: boolean;
-    uppercase: boolean;
-    numbers: boolean;
-    special: boolean;
-    minNumbers: number;
-    minSpecial: number;
-};
 
 const defaultSettings: PasswordSettings = {
     length: 16,
@@ -46,6 +38,19 @@ const AddPassword = ({ onClose, onPasswordAdded, }: { onClose: () => void , onPa
   ].filter(Boolean).length;
   const disabledColor = '#bdbdbd';
 
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const settings = await settingsService.getSettings();
+        console.log(settings);
+        setSettings(settings);
+      } catch (error) {
+        console.error("Error fetching settings:", error);
+      }
+    };
+
+    fetchSettings();
+  }, []);
 
 const handleGeneratePassword = () => {
     const { length, lowercase, uppercase, numbers, special, minNumbers, minSpecial } = settings;
@@ -116,6 +121,16 @@ const handleGeneratePassword = () => {
       setError(error instanceof Error ? error.message : "An error occurred while saving the password.");
     }
   };
+
+  const handleSaveSettings = async () => {
+    try {
+      console.log(settings);
+      await settingsService.updateSettings(settings);
+      setShowSettings(false);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "An error occurred while saving the settings.");
+    }
+  }
 
   return (
       <div className="modal">
@@ -400,7 +415,7 @@ const handleGeneratePassword = () => {
                     valueLabelDisplay="auto"/>
             </div>
             <div className="modal-actions">
-              <button onClick={() => setShowSettings(false)}>SAVE</button>
+              <button onClick={handleSaveSettings}>SAVE</button>
               <button onClick={() => setShowSettings(false)}>CANCEL</button>
             </div>
             </>

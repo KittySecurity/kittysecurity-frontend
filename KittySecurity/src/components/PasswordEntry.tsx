@@ -59,10 +59,9 @@ const PasswordEntire = ({ id, onPasswordAdded } : PasswordEntryProps) => {
 
     }
 
-    const handleDeletePassword = () => {
+    const handleDeletePassword = async () => {
         try{
-            console.log(entryId)
-            passwordService.deletePassword(entryId)
+            await passwordService.deletePassword(entryId);
             if (onPasswordAdded) onPasswordAdded();
         }catch (error){
             console.error(error)

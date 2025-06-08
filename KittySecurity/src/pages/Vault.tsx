@@ -96,7 +96,7 @@ function Vault() {
                         </thead>
                         <tbody>
                         {passwordEntries.map((entry, idx) => (
-                            <PasswordEntry key={idx} id={entry} />
+                            <PasswordEntry key={idx} id={entry} onPasswordAdded={fetchPasswords}/>
                         ))}
                         </tbody>
                     </table>

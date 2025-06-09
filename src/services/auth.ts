@@ -24,8 +24,13 @@ export async function register(username: string, email: string, master_hash: str
 }
 
 export async function logout() {
+  const token = sessionStorage.getItem("refreshToken");
+  console.log("Logging out with token:", token);
   const response = await api.post(
-    "/auth/logout",
+    "/auth/logout", 
+    {
+      "token": JSON.parse(token || "null"),
+    }
   );
   return response.data;
 }
